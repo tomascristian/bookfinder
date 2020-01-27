@@ -1,0 +1,126 @@
+
+*, ::before, ::after {
+	box-sizing: border-box;
+}
+
+:root {
+    --text-color: hsl(0, 0%, 50%);
+    --accent-color: hsl(160, 80%, 45%);
+
+    --book-cover-width: 128px;
+    --book-card-max-width: calc(var(--book-cover-width)*3);
+    --book-card-min-width: 320px;
+
+    background-color: hsl(0,0%,95%);
+    font-size: 16px;       
+}
+
+a {
+    text-decoration: none;
+    transition: 200ms all;
+}
+
+body {
+    display: grid;
+    gap: 40px;
+
+    /* Footer always at the bottom of viewport */    
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    
+    max-width: calc(var(--book-card-max-width)*2);
+    padding: 10px;
+    margin: 0 auto; /* Center body on viewport */
+
+    color: var(--text-color);
+}
+
+header {
+    display: grid;
+    place-content: center;
+    text-align: center;
+}
+
+input {
+    height: 3ex;
+    color: inherit;
+}
+
+button {
+ height: 3ex;
+ border: none;
+ background-color: var(--accent-color);
+ color: white;
+}
+
+button:hover {
+   opacity: 0.7; 
+}
+
+main {
+    display: grid;
+    gap: 20px;
+    
+    /* This makes it responsive */
+    grid-template-columns: repeat(auto-fit, minmax(var(--book-card-min-width), 1fr)); 
+    
+    justify-items: center;
+}
+
+.book-card {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: min-content auto;
+    grid-template-rows: repeat(3, auto) 1fr;
+
+    width: 100%;
+    max-width: var(--book-card-max-width); 
+    min-width: var(--book-card-min-width);
+    min-height: calc(var(--book-cover-width) * 2);
+
+    padding: 15px;
+    
+    box-shadow: 0 1px 2px 0 hsl(0, 0%, 80%);
+    background-color: white;
+}
+
+.book-card img {
+    grid-row: span 4;
+    position: relative;
+    top: -25px;
+    margin-right: 15px;
+}
+
+.book-card h2 {
+    margin: 0;
+}
+
+.book-card a {
+    align-self: end;
+    justify-self: center;
+    padding: 5px;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    color: var(--accent-color);
+}
+
+.book-card a:hover {
+    opacity: 0.7;
+}
+
+footer {
+    text-align: center;
+}
+
+footer a {
+    color: black;
+    opacity: 0.4;
+}
+
+footer a:hover {
+    opacity: 1;
+}
+
+footer img {
+    vertical-align: top;
+}
