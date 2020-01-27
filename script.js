@@ -45,7 +45,8 @@ function fetchBooks(searchTerms) {
 function processBookInfo(item) {
   const { imageLinks, title, authors, publisher, infoLink } = item.volumeInfo;
   return {
-    cover: imageLinks ? imageLinks.thumbnail : "",
+    // HACK: Google Books API returns links as http, but using https instead works fine.      
+    cover: imageLinks ? imageLinks.thumbnail.replace("http", "https") : "",
     title,
     author: authors ? authors.join(", ") : "Unknown",
     publisher: publisher || "Unknown",
